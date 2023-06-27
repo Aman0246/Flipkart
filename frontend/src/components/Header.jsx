@@ -13,7 +13,7 @@ const Component=styled(Box)({
 })
 
 const CustomButtonWrapper=styled(Box)({
-    margin:"0 5% 0 auto"
+    margin:"0 8% 0 auto"
 })
 export const Header=()=>{
 
