@@ -18,7 +18,6 @@ const InputSearchBase=styled(InputBase)({
 })
 const SearchIconNavbar=styled(Box)({
     color:"blue",
-    // display:"flex"
 })
 
 
