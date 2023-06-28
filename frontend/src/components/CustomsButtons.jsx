@@ -4,10 +4,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import styled from "@emotion/styled";
 import { useState } from 'react';
 import { Login } from "./LoginDialog";
-
-
-
-
+import { useSelector } from "react-redux";
 
 
 
@@ -24,6 +21,10 @@ const SubWrapper=styled(Box)({
 
 
 export const CustomButtons=()=>{
+   let useselectorData=useSelector(state=>state)
+  let a=useselectorData.singleUserSlice.firstname
+
+
     const [openLoginDialog,SetopenLoginDialog]=useState(false)
     
 
@@ -33,7 +34,8 @@ const handleOpen=(e)=>{
 }
     return(
         <Wrapper>
-            <Button  onClick={handleOpen} sx={{backgroundColor:"#fff",color:"#2874f0",boxShadow:"none",textTransform:"none",padding:"2px 7px",borderRadius:"3px",fontWeight:"600"}} variant="contained">Log in</Button>
+            {a?<Typography>{a}</Typography>:<Button  onClick={handleOpen} sx={{backgroundColor:"#fff",color:"#2874f0",boxShadow:"none",textTransform:"none",padding:"2px 7px",borderRadius:"3px",fontWeight:"600"}} variant="contained">Log in</Button>}
+            
             <Typography style={{width:"135px",marginLeft:"2%",padding:"0 3px"}}>Become a seller </Typography>
             <Typography style={{width:"135px",marginLeft:"2%"}}>More</Typography>
 
