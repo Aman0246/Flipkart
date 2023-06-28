@@ -5,23 +5,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        min: 5,
-        max: 20
     },
     lastname: {
         type: String,
         required: true,
         trim: true,
-        min: 5,
-        max: 20
-    },
-    username: {
-        type: String,
-        required: true,
-        trim: true,
-        unique: true,
-        index: true,
-        lowercase: true
     },
     email: {
         type: String,
@@ -42,3 +30,13 @@ const userSchema = new mongoose.Schema({
 const user = mongoose.model('user', userSchema);
 
 module.exports={user};
+
+
+   // username: {
+    //     type: String,
+    //     required: true,
+    //     trim: true,
+    //     unique: true,
+    //     index: true,
+    //     lowercase: true
+    // },
