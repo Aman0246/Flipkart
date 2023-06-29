@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import { useState } from 'react';
 import { Login } from "./LoginDialog";
 import { useSelector } from "react-redux";
+import { Profile } from "./profile";
 
 
 
@@ -21,10 +22,8 @@ const SubWrapper=styled(Box)({
 
 
 export const CustomButtons=()=>{
-   let useselectorData=useSelector(state=>state)
-  let a=useselectorData.singleUserSlice.firstname
-
-
+    let userselecter=useSelector(state=>state)
+    let d=userselecter.singleUserSlice.firstname
     const [openLoginDialog,SetopenLoginDialog]=useState(false)
     
 
@@ -34,7 +33,7 @@ const handleOpen=(e)=>{
 }
     return(
         <Wrapper>
-            {a?<Typography>{a}</Typography>:<Button  onClick={handleOpen} sx={{backgroundColor:"#fff",color:"#2874f0",boxShadow:"none",textTransform:"none",padding:"2px 7px",borderRadius:"3px",fontWeight:"600"}} variant="contained">Log in</Button>}
+            {d?<Profile/>:<Button  onClick={handleOpen} sx={{backgroundColor:"#fff",color:"#2874f0",boxShadow:"none",textTransform:"none",padding:"2px 7px",borderRadius:"3px",fontWeight:"600"}} variant="contained">Log in</Button>}
             
             <Typography style={{width:"135px",marginLeft:"2%",padding:"0 3px"}}>Become a seller </Typography>
             <Typography style={{width:"135px",marginLeft:"2%"}}>More</Typography>

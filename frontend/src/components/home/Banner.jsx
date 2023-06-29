@@ -39,7 +39,6 @@ export const Banner=()=>{
         containerClass="carousel-container"
 
         transitionDuration={500}
-
             autoPlaySpeed={1000}
         infinite={true}
         keyBoardControl={true}

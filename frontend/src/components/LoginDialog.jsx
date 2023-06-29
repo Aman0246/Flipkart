@@ -143,8 +143,25 @@ const handleLogin=async(e)=>{
             localStorage.setItem("_id",user.data.id)
             localStorage.setItem("token",true)
            SetopenLoginDialog(false)
+           //--------------------------------------------------------------------------
+             //to send the logined user to store
+                 
+           let logineduser=async()=>{
+            setloder(true)
+               let id = localStorage.getItem("_id");
+               if(id){
+                   await axios.post("/singleuser", { id: id }).then((a) => {
+                       dispatchss(currentuser(a.data.user));
+                       setloder(false)
+                    });
+                }}
+                logineduser()
+                toast.success(user.data.message)
+        //--------------------------------------------------------------------------
         }
-        // console.log(user)
+        else if(user.data.status==false){
+            toast.error(user.data.message);
+        }
     })
 
 }

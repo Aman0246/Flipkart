@@ -14,20 +14,21 @@ axios.defaults.withCredentials = true;
 
 function App() {
   const dispatchUser = useDispatch();
+//--------------------------------Checkuser that  he is logined  from local storage-------------------------------------------------
+useEffect(() => {
+  const getuser = async () => {
+    let id = localStorage.getItem("_id");
+    if (id) {
+      await axios.post("/singleuser", { id: id }).then((a) => {
+        dispatchUser(currentuser(a.data.user));
+      });
+    }
+  };
+  getuser();
+});
+//--------------------------------Checkuser that  he is logined  from local storage-------------------------------------------------
 
-  useEffect(() => {
-    const getuser = async () => {
-      let id = localStorage.getItem("_id");
-      if (id) {
-        await axios.post("/singleuser", { id: id }).then((a) => {
-          dispatchUser(currentuser(a.data.user));
-        });
-      }
-    };
-    getuser();
-  });
-
-  const Homemargin = styled(Box)({
+const Homemargin = styled(Box)({
     marginTop: "55px",
   });
 
