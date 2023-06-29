@@ -13,7 +13,7 @@ import { logOutUser } from "../Redux/currentUserSlice";
     let Dispatchess=useDispatch()
 // /*check user data from slice */-----------------------------------
     let useselectorData=useSelector(state=>state)
-    console.log(useselectorData)
+    // console.log(useselectorData)
     let a=useselectorData.singleUserSlice.firstname
 //-------------------------------------------------------------------
 let [opens,setopens]=useState(false)
@@ -28,7 +28,7 @@ let [opens,setopens]=useState(false)
     Dispatchess(logOutUser("a"))
     localStorage.clear("_id")
     localStorage.clear("token")
-    console.log(useselectorData)
+    // console.log(useselectorData)
    }
 
 
@@ -37,7 +37,7 @@ let [opens,setopens]=useState(false)
 /* The code you provided is rendering a dropdown menu component using the `Menu` and `MenuItem`
 components from the Material-UI library. */
         <>
-          <Box onClick={handClick} ><Typography>{a}</Typography></Box>
+          <Box sx={{cursor:"pointer"}} onClick={handClick} ><Typography>{a}</Typography></Box>
                     <Menu
                     anchorEl={opens}
                     open={opens}

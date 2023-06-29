@@ -134,12 +134,14 @@ const handelregister=async(e)=>{
 }
 let dispatchss=useDispatch()
 const handleLogin=async(e)=>{
-    e.preventDefault()
 
+    e.preventDefault()
     setloder(true)
     await axios.post("/login",(login)).then((user)=>{
         setloder(false)
+
         if(user.data.status==true){
+            setLogin({email:"",password:""})
             localStorage.setItem("_id",user.data.id)
             localStorage.setItem("token",true)
            SetopenLoginDialog(false)
@@ -172,10 +174,9 @@ const handleLogin=async(e)=>{
 
 
     return(
-        <Dialog open={openLoginDialog} onClose={handleclose} PaperProps={{sx:{maxWidth:"unset"}}}>
+        <Dialog open={Boolean(openLoginDialog)} onClose={handleclose} PaperProps={{sx:{maxWidth:"unset"}}}>
           <Component>
             <Box sx={{display:"flex",height:"100%"}}>
-                   
                  <Image>
                     <Box sx={{padding:"10% 10%"}}>
                     <Typography style={{fontSize:"2rem",paddingBottom:"2%"}}>{accout==true?"Login ":"Look like you are hear!"}</Typography>
@@ -190,6 +191,7 @@ const handleLogin=async(e)=>{
                       
                       <Wrapper>
                         <TextField id="standard-basic" type='Email' onChange={(e)=>onInput(e)} name='email' label="Enter Email" variant="standard" />
+                          {loder? <Loader/> :("")}
                         <TextField id="standard-basic" type='password'onChange={(e)=>onInput(e)} name='password' label="Enter Password" variant="standard" />
                         <Textstyle>By continuing, you agree to flipkart's Terms of use and Privacy Policy </Textstyle>
                         <LoginButton onClick={handleLogin} >Login</LoginButton>

@@ -37,15 +37,16 @@ export const Banner=()=>{
           dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
         containerClass="carousel-container"
-
+        swipeable={false}
+        draggable={false}
         transitionDuration={500}
-            autoPlaySpeed={1000}
+        autoPlay={true}
+        autoPlaySpeed={1000}
         infinite={true}
-        keyBoardControl={true}
         showDots={true}>
                        {
                          bannerData.map(e=>(
-                            <Imagewrapper  src={e.url} alt="" srcSet="" />
+                            <Imagewrapper key={e.id} src={e.url} alt="" srcSet="" />
                          ))
                        }
         </Carousel>
