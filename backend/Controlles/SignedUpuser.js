@@ -2,7 +2,6 @@ const { user } = require("../models/userSchema")
 
 const D=async(req,res)=>{
     let {id}=req.body
-    console.log({a:id})
     try {
        let c=await user.findById({_id:id})
     if(!c)return res.send({status:false,message:"user not found"})

@@ -20,7 +20,7 @@ const Text=styled(Typography)({
     return(
      <Navberheader>
         {
-           navData.map(e=>(<Box sx={{padding:" 13px 8px", textAlign:"center"}} >
+           navData.map((e,i)=>(<Box key={i} sx={{padding:" 13px 8px", textAlign:"center"}} >
                                        <img src={e.url} alt="categoryLogo" className="w-[64px]"  />
                                        <Text>{e.text}</Text>
 
