@@ -10,7 +10,7 @@ const {getProducts}=require("../Controlles/ProductController")
 routes.post("/login",login)
 routes.post("/register",registration)
 routes.post("/singleuser",D)
-routes.post("/allproducts",getProducts)
+routes.get("/allproducts",getProducts)
 
 
 module.exports={routes}

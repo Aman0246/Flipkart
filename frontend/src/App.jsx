@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import { Login } from "./components/LoginDialog";
 import axios from "axios";
 import { useEffect } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { currentuser } from "./Redux/currentUserSlice";
 
 axios.defaults.baseURL = import.meta.env.VITE_PORT;
