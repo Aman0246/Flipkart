@@ -6,10 +6,19 @@
     import { useEffect } from "react"
     import { useDispatch,useSelector } from "react-redux"
     import {Slide} from "./Slide"
+    import { Loader } from "../Loader/Loader"
+    import { MidSlide } from "./MidSlide"
+    import { MidSection } from "./MidSection"
     
     const BannerWrapper=styled(Box)({
         padding:" 10px 10px",
         backgroundColor:"#f2f2f2"
+    })
+    const Loadding=styled(Box)({
+        display:"flex",
+        justifyContent:"center",
+        marginTop:"2rem"
+
     })
 
     export const Home=()=>{
@@ -28,12 +37,21 @@
             <Navebar/>
             <BannerWrapper>
             <Banner/>
-
-                {/* {selector.productSlice.isLoading==false && selector.productSlice.isError==false?(<Slide allProduct={allProduct} />):("")} */}
-                <Slide allProduct={allProduct} title="Deal of the Day" timmer={true} />  
-                <Slide allProduct={allProduct} title="Discount for you" />  
-                <Slide allProduct={allProduct} title="Suggesting item" />  
-                <Slide allProduct={allProduct} title="Trending offers" />  
+                {selector.productSlice.isLoading==false && selector.productSlice.isError==false?(<>
+  
+                    <MidSlide allProduct={allProduct} title="Deal of the Day" timmer={true} />  
+                    <Slide allProduct={allProduct} title="Discount for you" />  
+                     <MidSection></MidSection> 
+                    <Slide allProduct={allProduct} title="Suggesting item" /> 
+                   
+                    <Slide allProduct={allProduct} title="Trending offers" />  
+                
+                </>
+                ):(<Loadding>
+                    <Loader/>
+                    </Loadding>
+                    )}
+          
             </BannerWrapper>
   
 

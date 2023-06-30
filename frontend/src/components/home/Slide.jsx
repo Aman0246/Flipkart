@@ -94,6 +94,8 @@ export const Slide = ({ allProduct ,title,timmer}) => {
         responsive={responsive}
         swipeable={false}
         draggable={false}
+        autoPlay={true}
+        autoPlaySpeed={3000}
         infinite={true}
         keyBoardControl={true}
         centerMode={true}

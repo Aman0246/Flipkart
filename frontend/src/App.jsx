@@ -28,18 +28,22 @@ useEffect(() => {
 });
 //--------------------------------Checkuser that  he is logined  from local storage-------------------------------------------------
 
+
 const Homemargin = styled(Box)({
     marginTop: "55px",
+    
+    Width:"50rem"
   });
 
   return (
-    <>
+<>
       <Header />
       <Homemargin>
         <Home />
       </Homemargin>
       <Login />
-    </>
+</>
+
   );
 }
 

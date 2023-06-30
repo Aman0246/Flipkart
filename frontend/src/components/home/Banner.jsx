@@ -6,7 +6,12 @@ import styled from '@emotion/styled';
 
 const Imagewrapper=styled("img")({
     width:"100%",
-    height:280
+    height:'280px',
+    '@media (max-width:900px)':{
+      objectFit:"cover",
+      height:"180px"
+    },
+
     
 })
 
