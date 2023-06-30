@@ -4,9 +4,13 @@ import styled from "@emotion/styled"
 
 const Navberheader=styled(Box)({
     display:"flex",
-    margin:"54px  130px  0  130px",
+   overflow:"hidden",
+   alignItems:"center",
+   textAlign:"center",  
     justifyContent: "space-between",
-    // textAlign:"center"
+    '@media (min-width:1200px)':{
+        margin:"54px  130px  0  130px",
+    }
 })
 
 const Text=styled(Typography)({

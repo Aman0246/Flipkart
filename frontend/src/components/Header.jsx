@@ -5,7 +5,8 @@ import { CustomButtons } from './CustomsButtons';
 
 const StyledHeader=styled(AppBar)({
     background:"#2874f0",
-    height:"55px",
+    height:"55px",  
+    
 })
 const Component=styled(Box)({
     marginLeft:'12%'
@@ -21,7 +22,7 @@ export const Header=()=>{
         <StyledHeader >
                     <Toolbar style={{minHeight:"55px"}} >
                              <Component>
-                                  <img src={Logo} className='w-[7rem]' alt="logo"/>
+                                  <img  src={Logo} className='w-[7rem]' alt="logo"/>
                              </Component>
                              <Search/>
                              <CustomButtonWrapper>

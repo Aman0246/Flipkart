@@ -12,14 +12,16 @@ import { Profile } from "./profile";
 const Wrapper=styled(Box)({
     display:"flex",
     alignItems:"center",
+
     
 })
 const SubWrapper=styled(Box)({
     display:"flex",
-    gap:"30%"
+    gap:"30%",
+
 })
 
-
+  
 
 export const CustomButtons=()=>{
     let userselecter=useSelector(state=>state)
@@ -33,7 +35,7 @@ const handleOpen=(e)=>{
 }
     return(
         <Wrapper>
-            {d?<Profile/>:<Button  onClick={handleOpen} sx={{backgroundColor:"#fff",color:"#2874f0",boxShadow:"none",textTransform:"none",padding:"2px 7px",borderRadius:"3px",fontWeight:"600"}} variant="contained">Log in</Button>}
+            {d?<Profile/>:<Button  onClick={handleOpen} sx={{backgroundColor:"#fff",color:"#2874f0",boxShadow:"none",textTransform:"none",padding:"2px 7px",marginLeft:{xs:"10px"},borderRadius:"3px",fontWeight:"600"}} variant="contained">Log in</Button>}
             
             <Typography style={{width:"135px",marginLeft:"2%",padding:"0 3px"}}>Become a seller </Typography>
             <Typography style={{width:"135px",marginLeft:"2%"}}>More</Typography>
