@@ -5,6 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import Countdown from "react-countdown";
 import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
 import Divider from '@mui/material/Divider';
+import { Link } from "react-router-dom";
 
 const responsive = {
   desktop: {
@@ -74,7 +75,7 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 };
 
 export const Slide = ({ allProduct ,title,timmer}) => {
-  console.log(allProduct);
+  // console.log(allProduct);
   return (
     <Components>
       <Deal>
@@ -101,13 +102,14 @@ export const Slide = ({ allProduct ,title,timmer}) => {
         centerMode={true}
       >
         {allProduct.map((e, i) => (
+          <Link to={`/produt/${e.id}`} style={{textDecoration:"none"}}>
           <Singleproducts  style={{padding:'25px 15px'}}>
             <img className=" w-auto h-40 items-center justify-center ml-2" src={e.detailUrl} alt="" srcset="" />
             <Text style={{fontWeight:"600" ,color:"#212121"}}>{e.title.shortTitle}</Text>
             <Text style={{color:"green"}}>{e.discount}</Text>
             <Text style={{color:"#212121", opacity:".7"}}>{e.tagline}</Text>
-          </Singleproducts>
-        ))}
+          </Singleproducts></Link>
+        ))} 
       </Carousel>
     </Components>
   );

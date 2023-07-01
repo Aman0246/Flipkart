@@ -10,5 +10,14 @@ const getProducts=async(req,res)=>{
         res.send({status:false,message:"500 error"})
     } 
 }
+const getOneProducts=async(req,res)=>{
+    try {
+        let {id}=req.params
+        let allproducts=await Products.findOne({id:id})
+        res.send({status:true,message:" found",data:allproducts})
+    } catch (error) {
+        res.send({status:false,message:"500 error"})
+    }
+}
 
-module.exports={getProducts}
+module.exports={getProducts,getOneProducts}
