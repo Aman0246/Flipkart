@@ -9,6 +9,7 @@
     import { Loader } from "../Loader/Loader"
     import { MidSlide } from "./MidSlide"
     import { MidSection } from "./MidSection"
+    import { getproduct } from "../../Redux/DetailViewSlice"
     
     const BannerWrapper=styled(Box)({
         padding:" 10px 10px",
@@ -24,13 +25,18 @@
     export const Home=()=>{
         let selector=useSelector(state=>state)
         const dispatch=useDispatch();
-        console.log(selector.productSlice );
+        // console.log(selector.productSlice );
         useEffect(()=>{
             dispatch(fetchAllProduct())
         },[])
         let allProduct=selector.productSlice.data
+        if(selector.productSlice.isLoading==false && selector.productSlice.isError==false){
+            dispatch(getproduct(allProduct))
+        }
         // console.log(selector.productSlice.data);
 
+        // let use=useSelector(state=>state)
+        // console.log(use)
 
         return(
             <>

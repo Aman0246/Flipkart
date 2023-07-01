@@ -9,11 +9,15 @@ const SearchContainer=styled(Box)({
         borderRadius:"2px",
         marginLeft:"3px",
         display:'flex',
+        '@media (min-width:0px) and (max-width:420px)':{
+          maxwidth:"37%",
+           },
 })
 
 const InputSearchBase=styled(InputBase)({
     width:"100%",
     padding:"0px 5px",
+    
   
 
 })

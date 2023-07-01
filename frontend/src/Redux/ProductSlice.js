@@ -1,17 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Serialize the headers into a plain JavaScript object
-const serializeHeaders = (headers) => {
-  const serializedHeaders = {};
-
-  headers.forEach((value, name) => {
-    serializedHeaders[name] = value;
-  });
-
-  return serializedHeaders;
-};
-
 export const fetchAllProduct = createAsyncThunk("nameFetchAllProduct", async () => {
   const response = await axios.get("/allproducts");
 
@@ -25,7 +14,7 @@ export const fetchAllProduct = createAsyncThunk("nameFetchAllProduct", async () 
  // Serialize the headers
   };
 });
-
+console.log(fetchAllProduct)
 export const getproductslice = createSlice({
   name: 'getproductslice',
   initialState: {
