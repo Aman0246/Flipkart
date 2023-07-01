@@ -12,6 +12,9 @@ import { Profile } from "./profile";
 const Wrapper=styled(Box)({
     display:"flex",
     alignItems:"center",
+    "@media (max-width:607px)":{
+        display:"block"
+    }
 
     
 })
@@ -19,11 +22,18 @@ const SubWrapper=styled(Box)({
     display:"flex",
     gap:"30%",
 
+
 })
-const Btn=styled(Button)({
- '@media (max-width:600px)':{
-    display:"none"
- }
+// const Btn=styled(Button)({
+//  '@media (max-width:600px)':{
+//     display:"none"
+//  }
+// })
+const Typographys=styled(Typography)({
+//  '@media (max-width:600px)':{
+//     display:"none",
+    
+//  }
 })
 
   
@@ -40,17 +50,18 @@ const handleOpen=(e)=>{
 }
     return(
         <Wrapper>
-            {d?<Profile/>:<Btn  onClick={handleOpen} sx={{backgroundColor:"#fff",color:"#2874f0",boxShadow:"none",textTransform:"none",padding:"2px 7px",marginLeft:{xs:"10px"},borderRadius:"3px",fontWeight:"600"}} variant="contained">Log in</Btn>}
+            {d?<Profile/>:<Button  onClick={handleOpen} sx={{backgroundColor:"#fff",color:"#2874f0",boxShadow:"none",textTransform:"none",padding:"2px 7px",marginLeft:{xs:"10px"},borderRadius:"3px",fontWeight:"600"}} variant="contained">Log in</Button>}
             
-            <Typography className="hidden md:block" style={{width:"135px",marginLeft:"2%",padding:"0 3px"}}>Become a seller </Typography>
-            <Typography className="hidden md:block" style={{width:"135px",marginLeft:"2%" }}>More</Typography>
+            <Typographys  style={{width:"135px",marginLeft:"2%",padding:"0 3px"}}>Become a seller </Typographys>
+            <Typographys  style={{width:"135px",marginLeft:"2%" }}>More</Typographys>
 
             <SubWrapper>
-                <Box><ShoppingCartIcon/></Box>
-            <Typography>Cart</Typography>
+                <Typographys><ShoppingCartIcon/></Typographys>
+            <Typographys >Cart</Typographys>
             </SubWrapper>
         <Login openLoginDialog={openLoginDialog} SetopenLoginDialog={SetopenLoginDialog} />
         </Wrapper>
 
     )
 }
+// className="hidden md:block"
