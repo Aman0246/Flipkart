@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 
 
-const productSchema = new mongoose.Schema({
+const CartSchema = new mongoose.Schema({
     id: String,
     url: String,
     detailUrl: String,
@@ -18,8 +18,12 @@ const productSchema = new mongoose.Schema({
     description: String,
     discount: String,
     tagline: String,
+    userid:{
+        type:String,
+        
+    }
 });
 
-const Products = mongoose.model('Product', productSchema);
+const CartModel = mongoose.model('CartModel', CartSchema);
 
-module.exports={Products}
+module.exports={CartModel}

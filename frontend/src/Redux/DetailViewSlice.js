@@ -12,12 +12,6 @@ reducers: {
     getproduct: (state,action) =>{
         state.data=action.payload
     },
-    singleProductDetails:(state,action)=>{
-        // console.log(state.data)
-        // console.log(action.payload);
-        // let index=
-        // let 
-    },
     producttoview:(state,action)=>{
         state.productviewinDetails=action.payload
 
@@ -30,5 +24,5 @@ reducers: {
 })
 
 
-export const {getproduct,singleProductDetails,producttoview} = Detail.actions
+export const {getproduct,producttoview} = Detail.actions
 export default Detail.reducer;
