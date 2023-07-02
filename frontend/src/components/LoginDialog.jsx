@@ -190,9 +190,9 @@ const handleLogin=async(e)=>{
                       
                       
                       <Wrapper>
-                        <TextField id="standard-basic" type='Email' onChange={(e)=>onInput(e)} name='email' label="Enter Email" variant="standard" />
+                        <TextField  type='Email' onChange={(e)=>onInput(e)} name='email' label="Enter Email" variant="standard" />
                           {loder? <Loader/> :("")}
-                        <TextField id="standard-basic" type='password'onChange={(e)=>onInput(e)} name='password' label="Enter Password" variant="standard" />
+                        <TextField  type='password'onChange={(e)=>onInput(e)} name='password' label="Enter Password" variant="standard" />
                         <Textstyle>By continuing, you agree to flipkart's Terms of use and Privacy Policy </Textstyle>
                         <LoginButton onClick={handleLogin} >Login</LoginButton>
                         <Typography>OR</Typography>
@@ -201,11 +201,11 @@ const handleLogin=async(e)=>{
                         </Wrapper>
                         :
                         <Wrapper>
-                        <TextField id="standard-basic" onChange={(e)=>onInputChange(e)} name='firstname' type='text'    label="Enter FirstName" variant="standard" />
-                        <TextField id="standard-basic" onChange={(e)=>onInputChange(e)} name='lastname' type='text' label="Enter LastName" variant="standard" />
-                        <TextField id="standard-basic" onChange={(e)=>onInputChange(e)} name='email' type='email' label="Enter Email" variant="standard" />
-                        <TextField id="standard-basic" onChange={(e)=>onInputChange(e)} name='password' type='password' label="Enter Password" variant="standard" />
-                        <TextField id="standard-basic" onChange={(e)=>onInputChange(e)} name='phone' type='text' label="Enter Phone" variant="standard" />
+                        <TextField  onChange={(e)=>onInputChange(e)} name='firstname' type='text'    label="Enter FirstName" variant="standard" />
+                        <TextField  onChange={(e)=>onInputChange(e)} name='lastname' type='text' label="Enter LastName" variant="standard" />
+                        <TextField  onChange={(e)=>onInputChange(e)} name='email' type='email' label="Enter Email" variant="standard" />
+                        <TextField  onChange={(e)=>onInputChange(e)} name='password' type='password' label="Enter Password" variant="standard" />
+                        <TextField  onChange={(e)=>onInputChange(e)} name='phone' type='text' label="Enter Phone" variant="standard" />
                         <LoginButton onClick={handelregister} >Continue</LoginButton>
                         <OtpButton onClick={()=>Setaccout(!accout)} >Sign in</OtpButton>
                            

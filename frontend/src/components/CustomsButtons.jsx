@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { Login } from "./LoginDialog";
 import { useSelector } from "react-redux";
 import { Profile } from "./profile";
+import { Link} from "react-router-dom";
+import Badge from '@mui/material/Badge';
 
 
 
@@ -40,12 +42,15 @@ const Typographys=styled(Typography)({
 
 export const CustomButtons=()=>{
     let userselecter=useSelector(state=>state)
+    let length=userselecter.CartSliceName.CartData.length
+
     let d=userselecter.singleUserSlice.firstname
     const [openLoginDialog,SetopenLoginDialog]=useState(false)
     
-
+// const navigate=useNavigate()
 const handleOpen=(e)=>{
     e.preventDefault()
+   
     SetopenLoginDialog(!openLoginDialog)
 }
     return(
@@ -54,11 +59,13 @@ const handleOpen=(e)=>{
             
             <Typographys  style={{width:"135px",marginLeft:"2%",padding:"0 3px"}}>Become a seller </Typographys>
             <Typographys  style={{width:"135px",marginLeft:"2%" }}>More</Typographys>
-
+            <Link to="/cart">
             <SubWrapper>
-                <Typographys><ShoppingCartIcon/></Typographys>
+                <Typographys>  <Badge badgeContent={length} color="error"><ShoppingCartIcon/></Badge></Typographys>
+               
             <Typographys >Cart</Typographys>
             </SubWrapper>
+            </Link>
         <Login openLoginDialog={openLoginDialog} SetopenLoginDialog={SetopenLoginDialog} />
         </Wrapper>
 

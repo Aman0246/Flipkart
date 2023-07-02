@@ -1,15 +1,21 @@
 import { Header } from "./components/Header";
 import "./App.css";
-import { Home } from "./components/home/Home";
 import { Box } from "@mui/material";
 import styled from "@emotion/styled";
-import { Login } from "./components/LoginDialog";
+import {Login} from "./components/LoginDialog";
 import axios from "axios";
-import { useEffect } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { currentuser } from "./Redux/currentUserSlice";
 import { Routes, Route} from "react-router-dom";
-import { DetailView } from "./components/Details/DetailView";
+import { Loader } from "./components/Loader/Loader";
+// import { DetailView } from "./components/Details/DetailView";
+const Home =lazy(() => import("./components/home/Home"));
+const Cart =lazy(() => import("./components/Cart"));
+// const Login =lazy(() => import("./components/LoginDialog"));
+
+const DetailView = lazy(() => import("./components/Details/DetailView"))
+
 axios.defaults.baseURL = import.meta.env.VITE_PORT;
 axios.defaults.withCredentials = true;
 function App() {
@@ -40,11 +46,15 @@ function App() {
       <Header />
               <Homemargin>
                     <Routes>
-                        <Route path="/" element={<Home />}/>
-                        <Route path="/produt/:id" element={<DetailView />}/>
+                  
+                        <Route path="/" element={  <Suspense fallback={<div><Loader></Loader></div>}><Home/></Suspense>}/>
+                        <Route path="/cart" element={  <Suspense fallback={<div><Loader></Loader></div>}><Cart/></Suspense>}/>
+           
+                        <Route path="/produt/:id" element={<Suspense fallback={<div><Loader></Loader></div>}><DetailView /></Suspense>}/>
                   </Routes> 
             </Homemargin>
         <Login />
+
  
     </>
   );

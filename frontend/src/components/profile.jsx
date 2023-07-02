@@ -5,6 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState } from "react";
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { logOutUser } from "../Redux/currentUserSlice";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -23,11 +24,12 @@ let [opens,setopens]=useState(false)
    const handleClose=()=>{
     setopens(false)
    } 
-
+const navigate=useNavigate()
    const Logout=()=>{
     Dispatchess(logOutUser("a"))
     localStorage.clear("_id")
     localStorage.clear("token")
+    navigate("/")
     // console.log(useselectorData)
    }
 

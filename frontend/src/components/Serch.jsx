@@ -37,10 +37,10 @@ const ListItemWrapper=styled(Box)({
     background:"#ffffff",
     color:"black ",
     marginTop:"36px",
-})
-const ListItems=styled(ListItem)({
-   maxWidthwidth:"20px",
-  
+    overflow:"scroll",
+    maxWidth:"50%",
+    maxHeight:"500px"
+
 
 })
 
@@ -65,7 +65,7 @@ export const Search=()=>{
                   {
                     products.filter(e=>e.title.longTitle.toLowerCase().includes(text.toLowerCase())).map(c=>(
                       <ListItemButton onClick={{display:"none"}}>
-                        <Link to={`/produt/${c.id}`}>
+                        <Link to={`/produt/${c.id}`} onClick={()=>setText("")}>
                         {c.title.longTitle}
                         </Link>
                       </ListItemButton>
