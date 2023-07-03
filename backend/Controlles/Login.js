@@ -12,11 +12,13 @@ const registration=async(req,res)=>{
         if(!validString(firstname))return res.send({status:false,message:"Invalid firestname"})
         if(!validString(lastname))return res.send({status:false,message:"Invalid lastname"})
         if(!validPhone(phone))return res.send({status:false,message:"Invalid phone"})
+        let emailcheck=await user.findOne({email})
+        if(emailcheck)return res.send({status:false,message:"used Email"})
         let bcryptpassword= await hassPassword(password)
         let userentry=await user.create({firstname,lastname,email,password:bcryptpassword,phone})
-        res.send({status:true,message:"Register succesfull"})
+        res.send({status:true,message:"Register succesfull",data:userentry})
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
     }
 }
 

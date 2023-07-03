@@ -1,7 +1,7 @@
 const { Products } =require ("../models/productSchema")
 
-
 const getProducts=async(req,res)=>{
+
     try {
             let allproducts=await Products.find()
             if(allproducts.length==0)return res.send({status:false,message:"no data found"})
@@ -11,6 +11,7 @@ const getProducts=async(req,res)=>{
     } 
 }
 const getOneProducts=async(req,res)=>{
+
     try {
         let {id}=req.params
         let allproducts=await Products.findOne({id:id})
