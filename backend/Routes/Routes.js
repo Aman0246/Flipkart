@@ -5,7 +5,20 @@ const{D}=require("../Controlles/SignedUpuser")
 const {getProducts,getOneProducts}=require("../Controlles/ProductController")
 const { addProduct,alladdProduct,removeitemFromCart } = require("../Controlles/Cart")
 const{createproduct}=require("../Controlles/CreateProducts")
-
+//============================================================================================
+const multer  = require('multer')
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        // Set the destination directory for uploaded files
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        // Set the filename for uploaded files
+        cb(null, file.originalname);
+    },
+});
+const upload = multer({ storage: storage });
+//============================================================================================
 
 routes.post("/login",login)
 routes.post("/register",registration)
@@ -15,7 +28,7 @@ routes.get("/oneproducts/:id",getOneProducts)
 routes.post("/:id/cartdata",addProduct)
 routes.post("/alladdcartdata",alladdProduct)
 routes.post("/delete",removeitemFromCart)
-routes.post("/createproduct",createproduct)
+routes.post("/createproduct",upload.single('file'),createproduct)
 
 
 
