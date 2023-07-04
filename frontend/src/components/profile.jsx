@@ -6,6 +6,9 @@ import { useState } from "react";
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { logOutUser } from "../Redux/currentUserSlice";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+let adminEmail=import.meta.env.VITE_ADMIN_EMAIL
 
 
 
@@ -33,6 +36,22 @@ const navigate=useNavigate()
     // console.log(useselectorData)
    }
 
+  const onlyAdmin=async()=>{
+    console.log("hellow")
+    let id = localStorage.getItem("_id");
+    if (id) {
+        await axios.post("/singleuser", { id: id }).then((a) => {
+         if(a.data.user.email=== adminEmail)
+         {
+                navigate("/addProduct")
+         }
+         else{
+            toast.error("Only Admin")
+         }
+        });
+      }
+
+  }
 
 
     return(
@@ -44,12 +63,13 @@ components from the Material-UI library. */
                     anchorEl={opens}
                     open={opens}
                     onClose={handleClose}
+                   
                 >
 
                     <MenuItem onClick={()=>{handleClose();Logout();}}>
-                    <PowerSettingsNewIcon color="error" fontSize="small"/>
-                        
-                        Logout</MenuItem>
+                    <PowerSettingsNewIcon color="error" fontSize="small"/> Logout</MenuItem>
+                    <MenuItem  onClick={onlyAdmin}>  Admin Only
+                       </MenuItem>
                 </Menu>
         
         </>

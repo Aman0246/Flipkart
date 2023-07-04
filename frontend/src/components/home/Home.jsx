@@ -12,7 +12,7 @@ import { Loader } from "../Loader/Loader"
 import { MidSlide } from "./MidSlide"
 import { MidSection } from "./MidSection"
 import { getproduct } from "../../Redux/DetailViewSlice"
-import { allDataofCart } from '../../Redux/CartSlice'
+
 
 const BannerWrapper=styled(Box)({
     padding:" 10px 10px",
@@ -29,17 +29,13 @@ const Loadding=styled(Box)({
 export default function Home() {
     let selector=useSelector(state=>state)
     const dispatch=useDispatch();
-    // console.log(selector.productSlice );
     useEffect(()=>{
         dispatch(fetchAllProduct())
     },[])
     let allProduct=selector.productSlice.data
     if(selector.productSlice.isLoading==false && selector.productSlice.isError==false){
         dispatch(getproduct(allProduct))
- //for cart-------------
-//  dispatch(allDataofCart(allProduct))
-//  console.log(selector)
- //for cart-------------
+
     }
     return(
         <>
@@ -69,13 +65,3 @@ export default function Home() {
 
 }
 
-
-// export default Home=()=>{
-    
-//     // console.log(selector.productSlice.data);
-
-//     // let use=useSelector(state=>state)
-//     // console.log(use)
-
-   
-// }       
