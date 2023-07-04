@@ -3,11 +3,6 @@ const {Products}=require("../models/productSchema")
 const {uploadFile}=require("../aws/aws")
 
 const createproduct=async(req,res)=>{
-    // console.log("body",req.body)
-
-    // // let {file}=req.file;
-    // console.log("file",req.file)
-    // let {id,url,title,price,description,tagline}=req.body
 
     try {
      
@@ -21,7 +16,6 @@ const createproduct=async(req,res)=>{
         if(!description) return res.send({status:false,message:"Empty description"})
         if(!tagline) return res.send({status:false,message:"Empty tagline"})
         if(parseInt(mrp) < parseInt(cost))return res.send({status:false,message:"Cost must Be less than MRP"})
-        if(parseInt(discount) > parseInt(cost)){return res.send({status:false,message:"Discount must Be less than Cost"})}
         let awsUrl= await uploadFile(filee)
         console.log("aws",awsUrl)
         const productDetail = {

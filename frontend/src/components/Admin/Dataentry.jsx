@@ -3,6 +3,9 @@ import { Box, Button, FormControl, FormHelperText, Input, InputLabel } from '@mu
 import TextField from '@mui/material/TextField';
 import React, { useState } from 'react'
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import {Loader} from "../Loader/Loader"
+let adminId=import.meta.env.VITE_ADMIN_ID;
 
 const Insidebox=styled(FormControl)({
  maxWidth:"500px",
@@ -22,49 +25,50 @@ const OuterBox=styled(Box)({
 })
 
 export default function Dataentry() {
+let [load,setLoad]=useState(false)
+
   let [data,setData]=useState("")
   let [value,setvalue]=useState("")
 const handleChange=(e)=>{
   setData({...data,[e.target.name]:e.target.value})
 }
-
-// const inputobj={
-//   id:data.id,
-//     url:value[0],
-//     title:{
-//     shortTitle:data.Title,
-//     longTitle:data.LTitle,
-//     },
-//     price :{
-//                 mrp:data.Mrp,
-//                 cost:data.Cost,
-//                 discount:data.Discount,
-//             },
-//     description:data. Description,
-//     tagline:data. Tagline,
-// }
-
 const handlesubmit=async(e)=>{
-  
   e.preventDefault();
-  console.log("clicked")
+  setLoad(true)
+  let c=localStorage.getItem("_id")
+  if(c===adminId)
+{
   let formData=new FormData()
-  formData.append('file', value[0])
-  formData.append('id', data.id);
-  formData.append('shortTitle', data.Title);
-  formData.append('longTitle', data.LTitle);
-  formData.append('mrp', data.Mrp);
-  formData.append('cost', data.Cost);
-  formData.append('discount', data.Discount);
-  formData.append('description', data.Description);
-  formData.append('tagline', data.Tagline);
-
+  formData.append('file', value[0])//menditary to use "file"
+  formData.append('id', data.id);             //specaily write backend key, value
+  formData.append('shortTitle', data.Title);//specaily write backend key, value
+  formData.append('longTitle', data.LTitle);//specaily write backend key, value
+  formData.append('mrp', data.Mrp);//specaily write backend key, value
+  formData.append('cost', data.Cost);//specaily write backend key, value
+  formData.append('discount', data.Discount);//specaily write backend key, value
+  formData.append('description', data.Description);//specaily write backend key, value
+  formData.append('tagline', data.Tagline);//specaily write backend key, value
   await axios.post("/createproduct",formData).then((output)=>{
-    console.log(output)
-  })
+    console.log(output.data.status)
+    if(output.data.status==true){
+      console.log("ok")
+      toast.success(output.data.message)
+      setLoad(false)
+    }
+    else if(output.data.status==false){
+      toast.error(output.data.message)
+      setLoad(false)
+    }
+  })}
+  else{
+    setLoad(false)
+    toast.error("You Are not Admin")
+
+  }
 }
 return (
     <OuterBox>
+      {load&&<Loader></Loader>}
          <Insidebox >
          <TextField  id="standard-basic" label=" Product id" onChange={handleChange}   name='id'   variant="standard" />
         <TextField id="standard-basic" label=" short Title" onChange={handleChange}  name='Title'   variant="standard" />
@@ -81,47 +85,3 @@ return (
   )
 }
 
-
-// export default function Dataentry() {
-//   const [file, setFile] = useState(null);
-
-//   const handleChange = (e) => {
-//     setFile(e.target.files[0]);
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     const formData = new FormData();
-//     formData.append('file', file);
-
-//     try {
-//       const response = await axios.post('/createproduct', formData);
-//       console.log(response.data);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-
-//   return (
-//     <OuterBox>
-//       <Insidebox>
-//         <form onSubmit={handleSubmit}>
-//           <input
-//             type="file"
-//             id="avatar"
-//             name="avatar"
-//             onChange={handleChange}
-//             accept="image/png, image/jpeg"
-//           />
-//           <Button
-//             style={{ backgroundColor: "#FF6700", color: "#ffffff", fontWeight: "500" }}
-//             type="submit"
-//           >
-//             Submit
-//           </Button>
-//         </form>
-//       </Insidebox>
-//     </OuterBox>
-//   );
-// }

@@ -12,7 +12,6 @@ const s3 = new AWS.S3({
 });
 
 let uploadFile = (file) => {
-  console.log("hellow",file)
   const filestream=fs.createReadStream(file.path)
   var uploadParams = {
     Bucket: bucketname,
@@ -33,22 +32,6 @@ let uploadFile = (file) => {
     });
   });
 };
-
-// const uploadimg = async (req, res) => {
-//   try {
-//     let files = req.files;
-//     if (files && files.length > 0) {
-//       const uploadFileUrl = await uploadFile(files[0]);
-//       res.status(201).send({
-//         status: true,
-//         data: uploadFileUrl,
-//       });
-//     }
-//   } catch (error) {
-//     res.status(500).send(error);
-//   }
-// };
-
 module.exports = { uploadFile };
 
 
