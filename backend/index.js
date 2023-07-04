@@ -1,12 +1,18 @@
 const express=require("express")
 const app =express()
 const {routes}=require("./Routes/Routes")
+//------------------------------------------------------------------
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+//------------------------------------------------------------------
 // const{DefaultsData}=require("./defaults")
 var cors = require('cors')
 app.use(cors({origin: true, credentials: true}));
 //------------------------------------------------------------------
-const multer  = require('multer')
-app.use(multer().any())
+// const multer  = require('multer')
+// app.use(multer().any())
+app.use(express.urlencoded({extended:false}))
+
 //------------------------------------------------------------------
 require("dotenv").config()
 app.use(express.json())
