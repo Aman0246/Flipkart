@@ -17,8 +17,12 @@ const Container=styled(Box)({
     
  
     const FilterBox=styled(Grid)({
-
+    //    background:"#007FFF",
         minHeight:"50rem",
+        overflow:"hidden",
+        borderRadius:"10px",
+        boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+        padding:"5px",
         '@media (max-width: 900px)': {
            display:"none",
           }  })
@@ -47,8 +51,10 @@ const Container=styled(Box)({
         <Container>
         {select.data.length!=0? <Grid container >
               
-                                        <FilterBox item lg={2} md={2} sm={0} xs={0} >
-                                 
+                                        <FilterBox  item lg={2} md={2} sm={0} xs={0} >
+                                         <img src="https://i.gadgets360cdn.com/large/bbd-main2_1569816930663.jpg" style={{height:"20rem",marginBottom:"10px"}} alt="" srcset="" />
+                                         <img style={{height:"20rem"}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvPc70BemjiEfYmyPI-gOfUafag8wxcw8Oq1zFyrmU3ILmO4o2pUIhsIemd53fogf7XIU&usqp=CAU" alt="" srcset="" />
+                                         <img  style={{height:"20rem",marginTop:"3px"}} src="https://assets.thehansindia.com/h-upload/2021/10/01/1114983-flipkart.webp" alt="" srcset="" />
                                         </FilterBox>
 
 
