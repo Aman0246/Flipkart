@@ -46,6 +46,7 @@ const handlesubmit=async(e)=>{
   formData.append('mrp', data.Mrp);//specaily write backend key, value
   formData.append('cost', data.Cost);//specaily write backend key, value
   formData.append('discount', data.Discount);//specaily write backend key, value
+  formData.append('discountTitle', data.Discount);//specaily write backend key, value
   formData.append('description', data.Description);//specaily write backend key, value
   formData.append('tagline', data.Tagline);//specaily write backend key, value
   await axios.post("/createproduct",formData).then((output)=>{
@@ -73,10 +74,11 @@ return (
          <TextField  id="standard-basic" label=" Product id" onChange={handleChange}   name='id'   variant="standard" />
         <TextField id="standard-basic" label=" short Title" onChange={handleChange}  name='Title'   variant="standard" />
         <TextField id="standard-basic" label=" Long Title"onChange={handleChange}  name='LTitle'   variant="standard" />
-        <TextField  type='number' id="standard-basic"onChange={handleChange}   name='Mrp'  label=" Mrp" variant="standard" />
-        <TextField type='number' id="standard-basic"onChange={handleChange}   name='Cost'  label=" Cost" variant="standard" />
-        <TextField type='number' id="standard-basic"onChange={handleChange}   name='Discount'  label=" Discount" variant="standard" />
+        <TextField  type='number' id="standard-basic" onChange={handleChange}   name='Mrp'  label=" Mrp" variant="standard" />
+        <TextField type='number' id="standard-basic" onChange={handleChange}   name='Cost'  label=" Cost" variant="standard" />
+        <TextField type='Text' id="standard-basic" onChange={handleChange}   name='Discount'  label=" Discount(catchy title)" variant="standard" />
         <TextField id="standard-basic" label=" Description" onChange={handleChange}  name='Description'  variant="standard" />
+        <TextField id="standard-basic" label="Discount (%) " onChange={handleChange}  name='Description'  variant="standard" />
         <TextField id="standard-basic" label=" Tagline"onChange={handleChange}    name='Tagline' variant="standard" /> 
         <TextField type="file"  id="image" name="avatar"  onChange={(e)=>{setvalue(e.target.files)}}   accept="image/png, image/jpeg"></TextField>
         <Button type='submit' onClick={handlesubmit} style={{backgroundColor:"#FF6700",color:"#ffffff",fontWeight:"500"}} > Submit </Button>

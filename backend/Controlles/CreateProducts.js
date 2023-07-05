@@ -7,7 +7,7 @@ const createproduct=async(req,res)=>{
     try {
      
         let filee=req.file
-        let {id,shortTitle,longTitle,mrp,cost,discount,description,tagline}=req.body
+        let {id,shortTitle,longTitle,mrp,cost,discount,discountTitle,description,tagline}=req.body
         if(!id||!shortTitle||!longTitle||!mrp||!cost||!discount||!description||!tagline) {return res.send({status:false,message:"Empty field"})}
         if(!shortTitle) return res.send({status:false,message:"Empty shortTitle"})
         if(!longTitle) return res.send({status:false,message:"Empty longTitle"})
@@ -17,7 +17,6 @@ const createproduct=async(req,res)=>{
         if(!tagline) return res.send({status:false,message:"Empty tagline"})
         if(parseInt(mrp) < parseInt(cost))return res.send({status:false,message:"Cost must Be less than MRP"})
         let awsUrl= await uploadFile(filee)
-        console.log("aws",awsUrl)
         const productDetail = {
                                   id:id,
                                    url:awsUrl,
@@ -31,11 +30,11 @@ const createproduct=async(req,res)=>{
                                     cost:cost,
                                     discount:discount,
                                 },
+                                discount:discountTitle,
                                 description: description,
                                 tagline: tagline,
                             }
-        console.log("productDetail",productDetail)
-                                const newproduct = await Products.create(productDetail);
+                                    const newproduct = await Products.create(productDetail);
                                 return res.status(200).send({ status: true, message: 'Product created successfully', data:newproduct });
 
         

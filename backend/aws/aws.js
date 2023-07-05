@@ -12,6 +12,7 @@ const s3 = new AWS.S3({
 });
 
 let uploadFile = (file) => {
+
   const filestream=fs.createReadStream(file.path)
   var uploadParams = {
     Bucket: bucketname,
@@ -22,7 +23,6 @@ let uploadFile = (file) => {
   return new Promise((resolve, reject) => {
     s3.upload(uploadParams, (err, data) => {
       if (err) {
-        console.log("error")
         console.log(err,"hellow");
         reject(err);
       } else {
