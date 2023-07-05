@@ -1,8 +1,10 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import Grid from '@mui/material/Grid';
 import styled from '@emotion/styled';
+import FlashOnIcon from '@mui/icons-material/FlashOn';
+import { Link } from 'react-router-dom';
 
 export default function Components() {
  const select=useSelector(state=>state.PaginationSLice)
@@ -30,6 +32,7 @@ const Container=styled(Box)({
 
  const RightBox=styled(Grid)({
             display:"flex",
+            cursor:"pointer"
 
         })
 
@@ -59,14 +62,16 @@ const Container=styled(Box)({
 
 
 
-                                        <RightBox item lg={9} md={9} sm={11} xs={11} >
+                                        <RightBox  item lg={9} md={9} sm={11} xs={11} >
                                            
 
                                             <RightINBOX container >
                                            {
                                            select.data.data.data.map(e=>(
                                                     <InsidGrid lg={4} md={4} sm={12} xs={12}>
-                                                        <Box className=" bg-gray-100 flex flex-col gap-2 md:mr-[30rem]  min-w-[21rem] my-4 mx-4 h-[400px] ">
+
+                                                          
+                                                        <Link   to={`/produt/${e.id}`} className=" bg-gray-100 flex flex-col gap-2 md:mr-[30rem]  min-w-[21rem] my-4 mx-4 h-[400px] ">
                                                                         <Box className="flex flex-col pt-4 items-center ">
 
                                                                 <img style={{height:"200px",width:"200px"}} src={e.url} alt="" />
@@ -84,7 +89,9 @@ const Container=styled(Box)({
                                                                 </Box>
                                                                 <Typography >{e.discount}</Typography>  
                                                                 </Box>
-                                                     </Box>
+      
+                                                     </Link>
+                                                
                                                     </InsidGrid>
                                                     ))
                                                 }
