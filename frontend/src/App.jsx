@@ -11,6 +11,7 @@ import { Routes, Route} from "react-router-dom";
 import { Loader } from "./components/Loader/Loader";
 import Dataentry from "./components/Admin/Dataentry";
 const Home =lazy(() => import("./components/home/Home"));
+const Main =lazy(() => import("./components/Pagination/Main"));
 const Cart =lazy(() => import("./components/Cart"));
 // const Login =lazy(() => import("./components/LoginDialog"));
 
@@ -36,7 +37,6 @@ function App() {
 
   const Homemargin = styled(Box)({
     marginTop: "55px",
-
     Width: "50rem",
   });
 
@@ -50,6 +50,7 @@ function App() {
                         <Route path="/" element={  <Suspense fallback={<div><Loader></Loader></div>}><Home/></Suspense>}/>
                         <Route path="/cart" element={  <Suspense fallback={<div><Loader></Loader></div>}><Cart/></Suspense>}/>
                         <Route path="/addProduct" element={  <Suspense fallback={<div><Loader></Loader></div>}><Dataentry/></Suspense>}/>
+                        <Route path="/perpage" element={  <Suspense fallback={<div><Loader></Loader></div>}><Main/></Suspense>}/>
                         <Route path="/produt/:id" element={<Suspense fallback={<div><Loader></Loader></div>}><DetailView /></Suspense>}/>
                   </Routes> 
             </Homemargin>

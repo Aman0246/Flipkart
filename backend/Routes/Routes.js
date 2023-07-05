@@ -5,6 +5,7 @@ const{D}=require("../Controlles/SignedUpuser")
 const {getProducts,getOneProducts}=require("../Controlles/ProductController")
 const { addProduct,alladdProduct,removeitemFromCart } = require("../Controlles/Cart")
 const{createproduct}=require("../Controlles/CreateProducts")
+const {perPageProduct}=require("../Controlles/Pagination/Pagination")
 //============================================================================================
 const multer  = require('multer')
 const storage = multer.diskStorage({
@@ -28,6 +29,7 @@ routes.get("/oneproducts/:id",getOneProducts)
 routes.post("/:id/cartdata",addProduct)
 routes.post("/alladdcartdata",alladdProduct)
 routes.post("/delete",removeitemFromCart)
+routes.get("/perpage",perPageProduct)
 routes.post("/createproduct",upload.single('file'),createproduct)
 
 
