@@ -19,7 +19,7 @@ const productSchema = new mongoose.Schema({
     description: String,
     discount: String,
     tagline: String,
-});
+},{timestamps:true});
 
 const Products = mongoose.model('Product', productSchema);
 

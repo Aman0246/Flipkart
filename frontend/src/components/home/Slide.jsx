@@ -41,10 +41,14 @@ const Timer = styled(Box)({
   alignItems:"center",
   color:"#7f7f7f"
 });
-const ViewButton =styled(Button)({
+const ViewButton =styled(Link)({
     marginLeft:"auto",
+     padding:"5px 10px",    
     borderRadius:"3px",
-    fontSize:"13px"
+    fontSize:"15px",
+   color:"white",
+   backgroundColor:"#007FFF"
+
 
 })
 const Singleproducts =styled(Box)({
@@ -84,7 +88,9 @@ export const Slide = ({ allProduct ,title,timmer}) => {
           <AccessAlarmsRoundedIcon />
          <Countdown date={Date.now() + 5.04e7} renderer={renderer}></Countdown>
         </Timer>}
-        <ViewButton variant="contained" color="primary">View All</ViewButton>
+         
+  
+        <ViewButton to='/perpage'   variant="contained" color="primary">View All</ViewButton>
       </Deal>
       <Divider />       
 
