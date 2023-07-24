@@ -1,5 +1,5 @@
 # Flipkat Clone
-
+LINK=>  https://flipkart-eight.vercel.app/
 This is a Flipkat clone project, a web application that replicates some of the functionalities of the popular e-commerce platform Flipkart. This README provides an overview of the project and instructions for setting it up and running it on your local machine.
 
 
